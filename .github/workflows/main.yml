@@ -1,0 +1,27 @@
+name: CI for Arabic Dialect Model
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run Tests (if you have any)
+      run: |
+        pytest your_test_folder/
+
+    # Add other steps as needed, like linting, etc.
